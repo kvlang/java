@@ -21,6 +21,7 @@ public class KVL {
     }
     public KVL() {
         this(new KVSet());
+        
     }
     public KVL(File file) throws Exception {
         this();
@@ -46,7 +47,8 @@ public class KVL {
 
         while((line = reader.readLine()) != null) {
             lineNum++;
-            line.trim();
+            line = line.split(">")[0];
+            line = line.trim();
             if (line.startsWith("++")) {
                 comment = !comment;
                 continue;
@@ -57,10 +59,10 @@ public class KVL {
             }
             if (comment)
                 continue;
-            line = line.replace("<.*", "");
-            if(line == "")
+
+            if(line.equals(""))
                 continue;
-            if(line.indexOf(delim) == -1) {
+            if(!line.contains(delim)) {
                 System.out.println("WARN: Skipped line (#" + lineNum + ") \"" + line + "\", no delimiter found (delim = \"" + delim + "\")");
                 continue;
             }
