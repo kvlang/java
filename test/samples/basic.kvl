@@ -1,0 +1,19 @@
+_delim-=
+> Sets the delimiter for KVL (default is "-", you should set it though.
+> By the way, these are comments, which are ignored by the KVL interpreter.
+key=value > Now, we can call kvl.get("key"); and get "value"!
+
+anotherKey=value > We can have keys with the same values...
+key=anotherValue > But not values with the same keys.
+++ The line above will be skipped, causing a warning in the console.
+This is a multi-line comment, which can span
+line
+after
+line
+after
+line ++
+
+> They begin and end with "++"
+
+statement=2*3=4 > Values can have delimiters in them...
+2*3=6=x         > The first delimiter splits the key and value
